@@ -1,0 +1,10 @@
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\bin\Debug\GameTools.exe.config
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\bin\Debug\GameTools.exe
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\bin\Debug\GameTools.pdb
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.csproj.AssemblyReference.cache
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.Properties.Resources.resources
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.csproj.GenerateResource.cache
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.csproj.CoreCompileInputs.cache
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.exe
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.pdb
+D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.Main.resources
