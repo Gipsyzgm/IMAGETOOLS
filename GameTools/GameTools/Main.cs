@@ -30,10 +30,6 @@ namespace GameTools
             _updateLogTxt = new UpdateLogTxt(UpdateLogTxtMethod);
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
         }
@@ -42,6 +38,7 @@ namespace GameTools
         {
             this.listBox1.Items.Clear();
             string path = this.textBox1.Text;
+            lastpath = "";
             if (path == "")
                 return;
             if (!Directory.Exists(path))
@@ -51,15 +48,20 @@ namespace GameTools
             }
 
             DirectoryInfo di = new DirectoryInfo(path);
-            DirectoryInfo[] dis = di.GetDirectories();
-
-            foreach (DirectoryInfo fil in dis)
+            //DirectoryInfo.GetFiles返回当前目录的文件列表   
+            FileInfo[] files = di.GetFiles("*", SearchOption.AllDirectories);
+            for (int i = 0; i < files.Length; i++)
             {
-                this.listBox1.Items.Add(fil.Name);
+                if (!files[i].Name.EndsWith(".png") && !files[i].Name.EndsWith(".jpg")) continue;
+                this.listBox1.Items.Add(files[i].Name);
             }
         }
 
+        public string oripath = "";
         public string lastpath = "";
+        public int settype = 0;
+        public float weight = 0;
+        public float high = 0;
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -68,16 +70,48 @@ namespace GameTools
             Logger.Log("路径" + lastpath);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Logger.Log("开始处理");
-            Program.ChangeImageSize();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            Logger.Log("开始处理");
-            Program.ChangeImageSizeByFolder(lastpath);
+            if (lastpath == "")
+            {
+                if (oripath == "")
+                {
+                    Logger.LogWarning("检查输入文件夹");
+                    return;
+                }
+
+                if (settype == 0)
+                {
+                    Logger.LogWarning("请选择图片处理方式");
+                    return;
+                }
+
+                if (weight == 0 || high == 0)
+                {
+                    Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
+                    return;
+                }
+
+                Logger.Log("开始处理文件夹");
+                Program.ChangeImageSizeByFolder(oripath, settype, weight, high);
+            }
+            else
+            {
+                if (settype == 0)
+                {
+                    Logger.LogWarning("请选择图片处理方式");
+                    return;
+                }
+
+                if (weight == 0 || high == 0)
+                {
+                    Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
+                    return;
+                }
+
+                Logger.Log("开始处理文件");
+                Program.ChangeImageSizeByFile(lastpath, settype, weight, high);
+            }
         }
 
 
@@ -122,6 +156,41 @@ namespace GameTools
         private void button4_Click(object sender, EventArgs e)
         {
             GetExcelFolderFiles();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox) sender;
+
+            // Save the selected employee's name, because we will remove
+            // the employee's name from the list.
+            string selectedEmployee = (string) comboBox1.SelectedItem;
+
+            if (selectedEmployee.StartsWith("按固定值修改大小"))
+            {
+                settype = 1;
+            }
+            else
+            {
+                settype = 2;
+            }
+
+            Logger.Log("选择模式" + selectedEmployee + ":" + settype);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            weight = float.Parse(textBox4.Text);
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            high = float.Parse(textBox5.Text);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            oripath = textBox1.Text;
         }
     }
 }

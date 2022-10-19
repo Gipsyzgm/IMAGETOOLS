@@ -8,3 +8,13 @@ D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.csproj.
 D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.exe
 D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.pdb
 D:\idiercode\trunk\client2\Tools\GameTools\GameTools\obj\Debug\GameTools.Main.resources
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\bin\Debug\GameTools.exe.config
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\bin\Debug\GameTools.exe
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\bin\Debug\GameTools.pdb
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.csproj.AssemblyReference.cache
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.Main.resources
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.Properties.Resources.resources
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.csproj.GenerateResource.cache
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.csproj.CoreCompileInputs.cache
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.exe
+D:\UnityProject\IMAGETOOLS\GameTools\GameTools\obj\Debug\GameTools.pdb
