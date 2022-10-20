@@ -50,8 +50,18 @@ namespace GameTools
                 }
                 else
                 {
-                    x = (int) Math.Ceiling(myBitmap.Width * weigh);
-                    y = (int) Math.Ceiling(myBitmap.Height * high);
+                    x = (int) (myBitmap.Width * weigh);
+                    y = (int) (myBitmap.Height * high);
+                }
+
+                if (x == 0)
+                {
+                    x = 1;
+                }
+
+                if (y == 0)
+                {
+                    y = 1;
                 }
 
                 var b = new System.Drawing.Bitmap(x, y);
@@ -59,7 +69,7 @@ namespace GameTools
                 // 插值算法的质量 
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(myBitmap, new System.Drawing.Rectangle(0, 0, (int) x, (int) y),
+                g.DrawImage(myBitmap, new System.Drawing.Rectangle(0, 0, x, y),
                     new System.Drawing.Rectangle(0, 0, myBitmap.Width, myBitmap.Height),
                     System.Drawing.GraphicsUnit.Pixel);
                 g.Dispose();
@@ -89,16 +99,27 @@ namespace GameTools
             }
             else
             {
-                x = (int) Math.Ceiling(myBitmap.Width * weigh);
-                y = (int) Math.Ceiling(myBitmap.Height * high);
+                x = (int) (myBitmap.Width * weigh);
+                y = (int) (myBitmap.Height * high);
             }
+
+            if (x == 0)
+            {
+                x = 1;
+            }
+
+            if (y == 0)
+            {
+                y = 1;
+            }
+
 
             var b = new System.Drawing.Bitmap(x, y);
             var g = System.Drawing.Graphics.FromImage(b);
             // 插值算法的质量 
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            g.DrawImage(myBitmap, new System.Drawing.Rectangle(0, 0, (int) x, (int) y),
+            g.DrawImage(myBitmap, new System.Drawing.Rectangle(0, 0, x, y),
                 new System.Drawing.Rectangle(0, 0, myBitmap.Width, myBitmap.Height),
                 System.Drawing.GraphicsUnit.Pixel);
             g.Dispose();

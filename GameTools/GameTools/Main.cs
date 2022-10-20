@@ -60,14 +60,17 @@ namespace GameTools
         public string oripath = "";
         public string lastpath = "";
         public int settype = 0;
-        public float weight = 0;
-        public float high = 0;
+        public string weight = "";
+        public string high = "";
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string curItem = listBox1.SelectedItem.ToString();
-            lastpath = this.textBox1.Text + "/" + curItem;
-            Logger.Log("路径" + lastpath);
+            if (listBox1.SelectedItem != null)
+            {
+                string curItem = listBox1.SelectedItem.ToString();
+                lastpath = this.textBox1.Text + "/" + curItem;
+                Logger.Log("路径" + lastpath);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,14 +89,20 @@ namespace GameTools
                     return;
                 }
 
-                if (weight == 0 || high == 0)
+                if (weight == "" || high == "")
+                {
+                    Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
+                    return;
+                }
+
+                if (float.Parse(weight) == 0f || float.Parse(high) == 0f)
                 {
                     Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
                     return;
                 }
 
                 Logger.Log("开始处理文件夹");
-                Program.ChangeImageSizeByFolder(oripath, settype, weight, high);
+                Program.ChangeImageSizeByFolder(oripath, settype, float.Parse(weight), float.Parse(high));
             }
             else
             {
@@ -103,14 +112,21 @@ namespace GameTools
                     return;
                 }
 
-                if (weight == 0 || high == 0)
+                if (weight == "" || high == "")
                 {
                     Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
                     return;
                 }
 
+                if (float.Parse(weight) == 0f || float.Parse(high) == 0f)
+                {
+                    Logger.LogWarning("请检查宽高值的输入是否正常，宽高均不可为0");
+                    return;
+                }
+
+
                 Logger.Log("开始处理文件");
-                Program.ChangeImageSizeByFile(lastpath, settype, weight, high);
+                Program.ChangeImageSizeByFile(lastpath, settype, float.Parse(weight), float.Parse(high));
             }
         }
 
@@ -180,12 +196,12 @@ namespace GameTools
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            weight = float.Parse(textBox4.Text);
+            weight = textBox4.Text;
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
-            high = float.Parse(textBox5.Text);
+            high = textBox5.Text;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
